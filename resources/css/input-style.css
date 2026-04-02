@@ -1,0 +1,17 @@
+/* Input Controls Styles */
+
+#datatable input.amount-cell {
+    max-width: 120px;
+    font-weight: 500;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    height: 30px;
+    text-align: right;
+}
+
+#datatable input.date-cell {
+    max-width: 145px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    height: 30px;
+}

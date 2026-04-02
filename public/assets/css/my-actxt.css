@@ -1,0 +1,21 @@
+/* Auto Complete Text Box Styles */
+
+.ui-widget-content {
+    background-color: #F5FEFD !important;
+}
+
+.ui-menu-item {
+    padding: 1px 4px !important;
+}
+
+.ui-menu-item .ui-menu-item-wrapper.ui-state-active {
+    background: #506ee4 !important;
+    font-weight: bold !important;
+    color: #ffffff !important;
+    padding: 3px 6px !important;
+}
+
+.nav-tabs .nav-item .nav-link.active {
+    background-color: #9ba7ca;
+    border-bottom-color: #9ba7ca;
+}

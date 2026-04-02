@@ -1,0 +1,340 @@
+/* User Defined Styles */
+
+.app-heading {
+    font-size: 14px;
+    color: #fd3c97;
+}
+
+.app-text {
+    font-size: 13px;
+    padding: 4px;
+    margin-bottom: 0px;    
+}
+
+.app-label {
+    font-size: 13px;
+    padding: 6px 10px;
+    border: 1px solid #e8ebf3;
+}
+
+.app-label-2 {
+    font-size: 13px;
+    padding: 6px 10px;    
+}
+
+.app-control {
+    border: 1px solid #e8ebf3; 
+    padding: 4px 10px;
+    /* margin-right:10px; */
+    border-radius: 0.25rem;
+    border-bottom: 1px solid #e8ebf3;
+    transition: border-color 0s ease-out;
+    background-color: #fff;
+}
+
+.app-control:disabled, .app-control[readonly] {
+    background-color: #f1f5fa;
+}
+
+.app-data {
+    color: black;
+    font-weight: 500;
+}
+
+.app-bold {
+    font-weight: 600;
+}
+
+.app-focus:focus {
+    outline: 1px solid #1976d2 !important;
+}
+
+.bank-table {
+    width: 100%;
+    border-collapse: separate; /* Important: avoid collapsing borders */
+    border: 1px solid gray; /* This adds only the outer border */
+    border-spacing: 0; /* Removes spacing between cells */
+    font-size: 14pt;    
+}
+
+.bank-table td {
+    padding: 6px 16px;
+    vertical-align: middle;
+    border: none; /* No cell borders */    
+}
+
+.bank-table .label {
+    width: 120px;
+}
+
+.bank-table .content {
+    color: black;
+}
+
+.bank-table .section-divider {
+    border-right: 1px solid gray;
+}
+
+/* --------------------- Table Style Start ------------------------- */
+.app-table {
+    width: 100%;
+    overflow-x: auto;
+    border-collapse: collapse !important;
+    border: 1px solid gray;
+}
+
+.app-table thead, .app-table tfoot {
+    background-color: #f1f5fa;
+}
+
+.app-table th {
+    font-weight: 600 !important;
+    border: 1px solid #ddd;
+    padding: 7px;
+}
+
+.app-table td {
+    border: 1px solid #ddd;
+    padding: 5px !important;
+}
+
+.app-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.app-table tr:hover {
+    background-color: #f1f5fa;
+}
+/* --------------------- Table Style End ------------------------- */
+
+.text-blue {
+    color: blue;
+}
+
+.text-red {
+    color: red;
+}
+
+.blue-text {
+    color: blue;
+}
+
+.dark-blue {
+    color: darkblue;
+}
+
+.color-blue {
+    color: blue;
+}
+
+.color-old-mauve {
+    color: #673147;
+}
+
+.hr1 {
+    border-top-color: lightgray;
+}
+
+.btn-icon {
+    padding: 0;
+    border: none;
+    height: auto;
+    line-height: 1;
+}
+
+/* no left border */
+.nlb {
+    border-left-width: 0px !important;
+}
+
+/* no right border */
+.nrb {
+    border-right-width: 0px !important;
+}
+
+/* no left & right border */
+.nlrb {
+    border-left-width: 0px !important;
+    border-right-width: 0px !important;
+}
+
+/* Auto Complete Text Box Styles */
+/* --------------------------------------------- */
+.ui-widget-content {
+    background-color: #F5FEFD !important;
+}
+
+.ui-menu-item {
+    padding: 1px 4px !important;
+}
+
+.ui-menu-item .ui-menu-item-wrapper.ui-state-active {
+    background: #506ee4 !important;
+    font-weight: bold !important;
+    color: #ffffff !important;
+    padding: 3px 6px !important;
+}
+
+.nav-tabs .nav-item .nav-link.active {
+    background-color: #9ba7ca;
+    border-bottom-color: #9ba7ca;
+}
+/* --------------------------------------------- */
+
+/* Heading Styles */
+/* --------------------------------------------- */
+.app-h2, .app-h3 {        
+    text-align: center;
+    font-weight: 600;
+    margin: 0px;
+}
+
+.app-h2 {
+    color: #fd3c97;
+    font-size: 17px;
+}
+
+.app-h3 {
+    color: blue;
+    font-size: 15px;
+}
+/* --------------------------------------------- */
+    
+
+/* ---------------- Report Style --------------- */
+/* Styles for Reports */
+
+.company-name {
+    font-size: 20pt;
+    font-weight: 600;
+    color: black;    
+    text-align: center;
+    margin: 4px 10px;
+}
+
+.company-info {
+    margin-left: 100px;
+}
+
+.address-line {
+    font-size: 13pt;
+    color: black;    
+    text-align: center;
+    margin: 4px 10px;
+}
+
+.title {
+    font-size: 18pt;
+    font-weight: 600;
+    color: black;    
+    text-align: center;
+}
+
+.data {
+    color: black;
+    font-size: 15px;
+}
+
+.title-logo {
+    position: absolute;
+    left: 0;
+    top: 40%;
+    transform: translateY(-50%);
+    height: 100px;
+    padding-left: 30px;
+}
+
+.title-company-name {
+    display: block;
+    text-align: center;
+    font-size: 24pt !important;
+    font-weight: 600;
+    color: black;
+    margin-bottom: 8px;
+}
+
+.title-report-name {
+    display: block;
+    text-align: center;
+    font-size: 22pt !important;
+    font-weight: 600;
+    color: black;
+    margin-bottom: 8px;
+}
+
+.title-report-date {
+    display: block;
+    text-align: center;
+    font-size: 20pt !important; 
+    font-weight: 600;   
+    color: black;
+}
+
+.title-report-route {
+    display: block;
+    text-align: center;
+    font-size: 20pt !important;
+    font-weight: 600;
+    color: black;
+}
+
+/* Styles for Display */
+@media screen {
+    .print-header, .print-footer, .print-only {
+        display: none;
+    }
+
+    .app-table th {
+        position: sticky;
+        top: 70px;
+        background-color: #f1f5fa; /* Background color of the sticky header */
+        z-index: 1000; /* Ensures the header stays on top of other content */    
+    }
+}
+
+/* Styles for Printing */
+@media print {
+    /* Set page size to A4 */
+    @page {
+        size: A4;
+        margin: 50pt;
+    }
+
+    .app-h2, .app-h3 {
+        color: black;
+        margin-bottom: 10px;
+    }
+
+    .app-h2 {        
+        font-size: 16pt;
+    }
+
+    .app-h3 {        
+        font-size: 15pt;
+    }
+
+    .app-table th {
+        color: black !important;
+        font-size: 15pt !important;        
+        border: 1px solid gray;        
+    }
+
+    .app-table td {
+        color: black !important;
+        font-size: 14pt !important;
+        border: 1px solid gray;
+    }
+
+    .app-table tfoot {
+        display: table-row-group;
+    }
+
+    .print-none {
+        display: none;
+    }
+
+    .hr1 {
+        border-top-color: black;
+    }
+}
+/* --------------------------------------------- */

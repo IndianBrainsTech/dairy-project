@@ -1,0 +1,29 @@
+.table-container {
+    overflow-y: scroll; /* Enable vertical scrolling */
+}
+
+thead th {
+    position: sticky; /* Stick the header row while scrolling */
+    top: 0;
+}
+
+.table-container input.amount-field {
+    color: black;
+    max-width: 80px;
+    font-weight: 500;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    height: 30px;
+    text-align: center;
+}
+
+.app-control {
+    border: 1px solid #e8ebf3; 
+    padding:6px;
+    border-radius: 0.25rem;
+    border-bottom: 1px solid #e8ebf3;
+    transition: border-color 0s ease-out;
+    background-color: #fff;
+    margin-right:20px;
+    width:100%;
+}

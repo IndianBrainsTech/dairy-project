@@ -1,0 +1,105 @@
+@extends('app-layouts.admin-master')
+
+@section('title', 'Current Stocks')
+
+@section('headerStyle')
+    <link href="{{ URL::asset('plugins/datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{ URL::asset('assets/css/my-style.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{ URL::asset('assets/css/my-actxt.css')}}" rel="stylesheet" type="text/css">
+    <style type="text/css">
+        .my-control {
+            padding: 6px 10px;
+            margin-right: 16px;
+        }
+    </style>
+@stop
+
+@section('content')
+    <div class="container-fluid">
+        <!-- Page-Title -->
+        <div class="row">
+            <div class="col-sm-12">
+                @component('app-components.breadcrumb-3')
+                    @slot('title') Current Stocks @endslot
+                    @slot('item1') Transactions @endslot
+                    @slot('item2') Production @endslot
+                @endcomponent
+            </div><!--end col-->
+        </div>
+        <!-- end page title end breadcrumb -->
+ 
+        <div class="row"> 
+            <div class="col-lg-8 col-md-10 col-sm-12">
+                <div class="card">
+                    <div class="card-body">
+                          <div class="table-responsive dash-social">
+                            <table id="datatable" class="table table-sm table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%">
+                                <thead class="thead-light">
+                                    <tr> 
+                                        <th data-priority="4" class="text-center">S.No</th>
+                                        <th data-priority="1" class="text-center">Product</th>
+                                        <th data-priority="2" class="text-center">Count</th>
+                                        <th data-priority="3" class="text-center">Batch NO</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach($currentStock as $index => $stock)
+                                        <tr>
+                                            <td class="text-center">{{ $loop->index + 1 }}</td>
+                                            <td>{{ $index }}</td>
+                                            @php 
+                                                $totalQty = 0; 
+                                                $unit = ''; 
+                                                $batchInfo = ''; 
+                                            @endphp
+                                
+                                            @foreach($stock as $sto)
+                                                @php
+                                                    $totalQty += $sto->total_stock_qty;
+                                                    $unit = $sto->primary_unit;                                                  
+                                                    $batchInfo .= $sto->batch_no . " : " . $sto->total_stock_qty . ( !$loop->last ? ', ' : '' );
+                                                @endphp
+                                            @endforeach                                
+                                            <td class="text-center">{{ $totalQty . " " . $unit }}</td>
+                                            <td>{{ $batchInfo }}</td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div> 
+                    </div><!--end card-body-->
+                </div><!--end card-->
+            </div> <!--end col-->
+        </div><!--end row-->
+    </div>
+@stop
+
+@push('custom-scripts')
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+    <script src="{{ URL::asset('assets/js/input-restriction.js')}}"></script>
+    <script src="{{ URL::asset('assets/js/helper.js')}}"></script>
+    <script>
+        $(document).ready(function () {
+            $.ajaxSetup({
+                headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+            });
+
+            
+            doInit();
+
+            function doInit() {
+                $('#datatable').dataTable( {
+                    "lengthMenu": [[10, 25, 50, 100], [10, 25, 50, 100]],
+                    "pageLength": 50,
+                } );
+            }            
+        });
+    </script>
+@endpush
+
+@section('footerScript')
+    <script src="{{ URL::asset('plugins/datatables/jquery.dataTables.min.js')}}"></script>
+    <script src="{{ URL::asset('plugins/datatables/dataTables.bootstrap4.min.js')}}"></script>
+@stop

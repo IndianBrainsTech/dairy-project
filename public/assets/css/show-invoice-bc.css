@@ -1,0 +1,114 @@
+/* Styles for Bulk Milk Invoice & Conversion (Job Work) */
+
+/* Common Styles */
+.fw-bold {
+    font-weight: 600;
+}
+
+.border-line {
+    border-bottom: 1px solid;
+}
+
+/* Invoice Header */
+.invoice-title {
+    font-size: 1.5rem;
+    display: inline;
+    margin-bottom: 8px;
+    font-weight: 500;
+    text-align: center;
+}
+
+.company-logo {
+    position: absolute;
+    transform: translate(10%, -50%);
+    width: 120px;
+    height: auto;
+}
+
+.name {
+    font-size: 1.3rem;
+    margin-bottom: 4px;
+    text-align: center;
+    font-weight: 500;
+    display: block;
+}
+
+.address, .number {
+    text-align: center;
+    margin-bottom: 8px;
+    display: block;
+}
+
+/* Table Styling */
+.invoice-table {
+    width: 100%;
+    overflow-x: auto;
+    border-collapse: collapse;
+}
+
+.invoice-table thead, .invoice-table tfoot {
+    background-color: #f1f5fa;
+    font-weight: 600;
+}
+
+.invoice-table td {
+    padding: 5px;
+    border: 1px solid lightGray;
+}
+
+.title-col {
+    text-align: right;
+    padding-right: 0.3rem;
+    font-weight: 600;
+    width: 60%;
+}
+
+.amt-col {
+    width: 40%;
+    text-align: right;
+}
+
+/* Label Styling */
+.detail-label, .bank-label {
+    display: inline-block;
+    line-height: 1.7em;
+}
+
+.detail-label {
+    min-width: 90px;
+}
+
+.bank-label {
+    min-width: 70px;
+}
+
+.bank-text {
+    margin-left: 20px;
+}
+
+/* Signature Line */
+.sign-line {
+    display: block;
+    text-align: right;
+    font-size: 0.95em;
+}
+
+.sign-gap {
+    margin-top: 50px;
+}
+
+/* Footer */
+.footer-text {
+    font-size: 95%;
+    font-weight: 400;
+    text-align: justify;
+    line-height: 1.5em;
+    margin-bottom: 0;
+}
+
+/* Print-Only Styles */
+@media screen {
+    .invoice-table .print-visible {
+        display: none;
+    }
+}

@@ -1,0 +1,91 @@
+/* User Defined Styles */
+
+.my-heading {
+    font-size: 14px;
+    color: #fd3c97;
+}
+
+.my-text {
+    font-size: 13px;
+    padding: 4px;
+    margin-bottom: 0px;    
+}
+
+.my-label {
+    font-size: 13px;
+    padding: 6px 10px;
+    border: 1px solid #e8ebf3;
+}
+
+.my-control {
+    border: 1px solid #e8ebf3; 
+    padding: 4px 10px;
+    /* margin-right:10px; */
+    border-radius: 0.25rem;
+    border-bottom: 1px solid #e8ebf3;
+    transition: border-color 0s ease-out;
+    background-color: #fff;
+}
+
+.my-control:disabled, .my-control[readonly] {
+    background-color: #f1f5fa;
+}
+
+.my-data {
+    color: black;
+    font-weight: 500;
+}
+
+.my-bold {
+    font-weight: 600;
+}
+
+#my-table {
+    width: 100%;
+    overflow-x: auto;
+    border-collapse: collapse;
+    border: 1px solid gray;
+}
+
+#my-table thead, #my-table tfoot {
+    background-color: #f1f5fa;
+}
+
+#my-table th {
+    font-weight: 600;
+    border: 1px solid #ddd;
+    padding: 7px;
+}
+
+#my-table td {
+    border: 1px solid #ddd;
+    padding: 5px;
+}
+
+#my-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+#my-table tr:hover {
+    background-color: #f1f5fa;
+}
+
+.blue-text {
+    color: blue;
+}
+
+/* no left border */
+.nlb {
+    border-left-width: 0px !important
+}
+
+/* no right border */
+.nrb {
+    border-right-width: 0px !important
+}
+
+/* no left & right border */
+.nlrb {
+    border-left-width: 0px !important;
+    border-right-width: 0px !important;
+}

@@ -1,0 +1,160 @@
+/* Styles for Reports */
+
+.my-text {
+    font-size: 14px;
+    padding: 4px;    
+}
+
+.my-control {
+    border: 1px solid #e8ebf3; 
+    padding:4px;
+    border-radius: 0.25rem;
+    border-bottom: 1px solid #e8ebf3;
+    transition: border-color 0s ease-out;
+    background-color: #fff;
+}
+
+.comp-name {
+    font-size: 26px;
+    font-weight: 600;
+    color: black;
+    display: block;
+    text-align: center;
+    margin-bottom: 4px;
+}
+
+.address {
+    font-size: 18px;
+    color: black;
+    display: block;
+    text-align: center;
+}
+
+.title {
+    font-size: 24px;
+    font-weight: 600;
+    color: black;
+    display: block;
+    text-align: center;
+}
+
+.data {
+    color: black;
+    font-size: 15px;
+}
+
+.title-logo {
+    position: absolute;
+    left: 0;
+    top: 40%;
+    transform: translateY(-50%);
+    height: 100px;
+    padding-left: 30px;
+}
+
+.title-company-name {
+    display: block;
+    text-align: center;
+    font-size: 24pt !important;
+    font-weight: 600;
+    color: black;
+    margin-bottom: 8px;
+}
+
+.title-report-name {
+    display: block;
+    text-align: center;
+    font-size: 22pt !important;
+    font-weight: 600;
+    color: black;
+    margin-bottom: 8px;
+}
+
+.title-report-date {
+    display: block;
+    text-align: center;
+    font-size: 20pt !important; 
+    font-weight: 600;   
+    color: black;
+}
+
+.title-report-route {
+    display: block;
+    text-align: center;
+    font-size: 20pt !important;
+    font-weight: 600;
+    color: black;
+}
+
+#reportTable {
+    width: 100%;
+    overflow-x: auto;
+    border-collapse: collapse;
+    border: 1px solid gray;
+}
+
+#reportTable thead, #reportTable tfoot {            
+    background-color: #f1f5fa;
+}
+
+#reportTable th {
+    font-weight: 600;
+    border: 1px solid #ddd;
+    padding: 7px;
+}
+
+#reportTable td {
+    border: 1px solid #ddd;
+    padding: 5px;
+}
+
+#reportTable tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+#reportTable tr:hover {
+    background-color: #f1f5fa;
+}
+
+/* Styles for Display */
+@media screen {
+    .print-header, .print-footer {
+        display: none;
+    }
+
+    #reportTable th {
+        position: sticky;
+        top: 70px;
+        background-color: #f1f5fa; /* Background color of the sticky header */
+        z-index: 1000; /* Ensures the header stays on top of other content */    
+    }
+}
+
+/* Styles for Printing */
+@media print {
+    /* Set page size to A4 */
+    @page {
+        size: A4;
+        margin: 50pt;
+    }    
+
+    #reportTable th {
+        color: black;
+        font-size: 17pt !important;
+        border: 1px solid gray;
+    }
+
+    #reportTable td {
+        color: black;
+        font-size: 16pt !important;
+        border: 1px solid gray;
+    }
+
+    tfoot {
+        display: table-row-group;
+    }
+
+    .no-print {
+        display: none;
+    }
+}

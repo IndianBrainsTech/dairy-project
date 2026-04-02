@@ -1,0 +1,116 @@
+.invoice-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.text-bold {
+    font-weight: 600;
+}
+
+.hr1 {
+    margin-top: 8px;
+    margin-bottom: 8px;
+    border-top-color: gray;
+}
+
+.hr2 {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.label {
+    min-width: 180px;
+    display: inline-block;
+    line-height: 1.7em;
+    font-weight: 600;
+}
+
+.title-col {
+    text-align: right;
+    padding-right: 0.3rem;
+    font-weight: 600;
+    width: 60%;
+}
+
+.amt-col {
+    width: 40%;
+    text-align: right;
+    padding-right: 0.5em;
+}
+
+.footer-text {
+    font-size: 85%;
+    font-weight: 400;
+    text-align: justify;
+    line-height: 1.3em;
+    margin-bottom: 0;
+}
+
+.info-table td {
+    vertical-align: top;
+    border: 1px solid lightGray;
+    padding: 5px;
+}
+
+.invoice-table {
+    width: 100%;
+    overflow-x: auto;
+    border-collapse: collapse;
+    border: 2px solid gray;
+}
+
+.invoice-table thead, .invoice-table tfoot {
+    font-weight: 800;
+    background-color: #f1f5fa;
+    border: 2px solid gray;
+}
+
+.invoice-table td {
+    padding: 5px;
+    border: 1px solid lightGray;
+}
+
+.tax-table {
+    width: 100%;
+    overflow-x: auto;
+    border-collapse: collapse;
+    border: 2px solid lightGray;
+    margin-top: 5px;
+    font-size: 0.9em;
+}
+
+.tax-table thead, .tax-table tfoot {
+    font-weight: 600;
+}
+
+.tax-table td {
+    padding: 2px 4px;
+    border: 1px solid lightGray;
+}
+
+.tax-table td.centered {
+    text-align: center;
+}
+
+.sign-line1 {
+    display: block;
+    text-align: center;
+    font-size: 0.95em;
+    margin-top: 72px;
+}
+
+.sign-line2 {
+    display: block;
+    text-align: center;
+    font-size: 0.95em;
+    margin-left: -10px;
+    margin-right: -10px;
+}
+
+/* Hide the row on the screen */
+@media screen {
+    .invoice-table .print-visible {
+        display: none;
+    }
+}

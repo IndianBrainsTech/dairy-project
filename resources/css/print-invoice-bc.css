@@ -1,0 +1,106 @@
+/* Styles for Printing of Bulk Milk Invoice & Conversion (Job Work) */
+
+/* Set page size to A4 */
+@page {
+    size: A4;
+    margin: 60px;
+}
+
+/* Set the layout for the printed content */
+.print-content {
+    width: 100%; /* Each printed content takes full width of the page */
+    float: none; /* Remove floating */
+    box-sizing: border-box; /* Include padding and border in the height */
+    overflow: hidden; /* Hide overflow */
+    color: black;
+    font-size: 20px;
+    /* font-family: Arial, Helvetica, sans-serif; */
+}
+
+/* Bootstrap Columns */
+.col-md-common {
+    flex: 0 0 auto;
+    position: relative;
+    padding-right: 12px;
+    padding-left: 12px;
+}
+
+.col-md-4 {
+    max-width: 33.33%;  /* (4/12)*100 */
+}
+
+.col-md-6 {
+    max-width: 50%;     /* (6/12)*100 */
+}
+
+.col-md-8 {
+    max-width: 66.66%;     /* (8/12)*100 */
+}
+
+#invoice-for {
+    font-size: 20px;
+}
+
+.invoice-title {
+    font-size: 36px;
+    font-weight: 600;
+    color: black;
+    border:1px solid;
+    padding: 5px 24px;
+    height: 240px;
+    overflow-y: auto;
+}
+
+.company-logo {
+    transform: translate(20%, -50%);
+    width: 200px;
+}
+
+.name {
+    font-size: 34px;
+    font-weight: 600;
+    color: black;
+    margin-top: 20px;
+}
+
+.address, .number {
+    font-size: 20px;
+    color: black;
+}
+
+.detail-label {
+    min-width: 130px;
+    line-height: 1.9em;
+}
+
+.bank-label {
+    min-width: 100px;
+    line-height: 1.8em;
+    font-size: 18px;
+}
+
+.bank-text {
+    font-size: 20px;
+}
+
+.sign-line {
+    font-size: 20px;
+}
+
+.sign-gap {
+    margin-top: 72px;
+}
+
+.footer-text { 
+    font-size: 18px;
+    line-height: 36px;
+}
+
+.invoice-table tbody {
+    height: 280px;
+}
+
+/* Show the row when printing */
+.print-visible {
+    display: table-row !important;
+}

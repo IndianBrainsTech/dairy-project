@@ -1,0 +1,117 @@
+/* Styles for Printing */
+
+/* Set page size to A4 */
+@page {
+    size: A4;
+    margin: 50px;
+}
+
+/* Set the layout for the printed content */
+.print-content,
+.print-duplicate {
+    width: 100%; /* Each printed content takes full width of the page */
+    float: none; /* Remove floating */
+    box-sizing: border-box; /* Include padding and border in the height */
+    overflow: hidden; /* Hide overflow */
+    color: black;
+    font-size: 16px;
+    /* font-family: Arial, Helvetica, sans-serif; */
+}
+
+/* Duplicate content */
+.print-duplicate {
+    position: absolute;
+}
+
+/* Next Page */
+.page-break {
+    page-break-after: always;
+}
+
+/* Styling for the cutting line */
+.cutting-line {
+    position: relative;
+    margin: 30px 0; /* Space before and after */
+    width: 100%;
+    border-top: 1px dotted black; /* Style and color of the line */
+    page-break-inside: avoid; /* Prevent breaking this line across pages */
+}
+
+/* Styling for the scissor symbol */
+.scissor-symbol {
+    position: absolute;
+    top: -19px; /* Adjust vertical position to center the symbol */
+    font-size: 25px; /* Adjust font size as needed */
+}
+
+/* Repeat the scissor symbol */
+.scissor-symbol:nth-child(1) {
+    left: calc(15%); /* Adjust the left position for the first scissor symbol */
+}
+
+.scissor-symbol:nth-child(2) {
+    left: calc(50%); /* Adjust the left position for the second scissor symbol */
+}
+
+.scissor-symbol:nth-child(3) {
+    left: calc(85%); /* Adjust the left position for the third scissor symbol */
+}
+
+
+/* Bootstrap Columns */
+.col-md-common {
+    flex: 0 0 auto;
+    position: relative;
+    padding-right: 12px;
+    padding-left: 12px;
+}
+
+.col-md-6 {
+    max-width: 50%;     /* (6/12)*100 */
+}
+
+.col-md-5 {
+    max-width: 41.66%;  /* (5/12)*100 */
+}
+
+.col-md-4 {
+    max-width: 33.33%;  /* (4/12)*100 */
+}
+
+.col-md-3 {
+    max-width: 25%;     /* (3/12)*100 */
+}
+
+.hr1 {
+    border-top-color: black;
+}
+
+.hr2 {
+    border-top-color: gray;
+}
+
+.invoice-table tbody {
+    height: 150px;
+    overflow-y: auto;
+}
+
+.invoice-table tbody.adjust-size {
+    height: 100px;
+}
+
+.sign-line1 {
+    margin-top: 90px;
+}
+
+/* Show the row when printing */
+.custom-table .print-visible {
+    display: table-row !important;
+}
+
+.temp-measure {
+    position: absolute;
+    left: -9999px;
+    top: -9999px;
+    width: 100%;
+    visibility: hidden;
+}
