@@ -4,10 +4,22 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
+/**
+ * ============================================================
+ * STATUS  : ALREADY DONE
+ * LARAVEL : Already recorded in migrations table
+ * DB      : vehicle_categories table already exists
+ * ACTION  : hasTable guard — exits silently if already exists
+ * ============================================================
+ */
 return new class extends Migration
 {
     public function up(): void
     {
+        if (Schema::hasTable('vehicle_categories')) {
+            return; // Already exists — skip
+        }
+
         Schema::create('vehicle_categories', function (Blueprint $table) {
             $table->id();
             $table->string('name', 100);

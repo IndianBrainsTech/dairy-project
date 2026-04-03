@@ -4,10 +4,19 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
+/**
+ * STATUS  : ALREADY DONE — hasTable guard protects against re-run
+ * LARAVEL : Already recorded in migrations table
+ * DB      : trip_sheets_market table already exists
+ */
 return new class extends Migration
 {
     public function up(): void
     {
+        if (Schema::hasTable('trip_sheets_market')) {
+            return;
+        }
+
         Schema::create('trip_sheets_market', function (Blueprint $table) {
             $table->id();
             $table->string('trip_number', 50)->unique();

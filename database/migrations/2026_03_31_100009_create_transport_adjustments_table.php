@@ -4,10 +4,19 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
+/**
+ * STATUS  : ALREADY DONE — hasTable guard protects against re-run
+ * LARAVEL : Already recorded in migrations table
+ * DB      : transport_adjustments table already exists
+ */
 return new class extends Migration
 {
     public function up(): void
     {
+        if (Schema::hasTable('transport_adjustments')) {
+            return;
+        }
+
         Schema::create('transport_adjustments', function (Blueprint $table) {
             $table->id();
             $table->string('adjustment_number', 50)->unique();
@@ -16,7 +25,8 @@ return new class extends Migration
             $table->unsignedBigInteger('trip_sheet_id')->nullable();
             $table->enum('adjustment_type', ['debit', 'credit'])->default('debit');
             $table->enum('reason', [
-                'damage', 'shortage', 'delay', 'toll', 'loading_unloading', 'other'
+                'damage', 'shortage', 'delay',
+                'toll', 'loading_unloading', 'other'
             ])->default('other');
             $table->string('reason_description', 255)->nullable();
             $table->decimal('amount', 12, 2)->default(0);

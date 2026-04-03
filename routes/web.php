@@ -39,6 +39,22 @@ use App\Http\Controllers\Masters\Purchase\Items\PurchaseItemGroupController;
 use App\Http\Controllers\Masters\Purchase\Items\PurchaseItemUnitController;
 use App\Http\Controllers\Masters\Purchase\Items\PurchaseItemController;
 use App\Http\Controllers\Transactions\CreditNoteController;
+
+
+use App\Http\Controllers\Transport\VehicleCategoryController;
+use App\Http\Controllers\Transport\VehicleController;
+use App\Http\Controllers\Transport\SupplierTransporterController;
+use App\Http\Controllers\Transport\VehicleRouteMappingController;
+use App\Http\Controllers\Transport\VehicleInsuranceController;
+use App\Http\Controllers\Transport\VehicleServiceController;
+use App\Http\Controllers\Transport\TripSheetController;
+use App\Http\Controllers\Transport\TripSheetMarketController;
+use App\Http\Controllers\Transport\TransportAdjustmentController;
+use App\Http\Controllers\Transport\TransportBillController;
+use App\Http\Controllers\Transport\SecondaryTransportController;
+use App\Http\Controllers\Transport\SecondaryTransportBillController;
+use App\Http\Controllers\Transport\SecondaryPaymentAbstractController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -630,6 +646,168 @@ Route::prefix('diesel-bills')->name('diesel-bills.')->group(function () {
     });
 });
 
+Route::prefix('transport')->name('transport.')->group(function () {
+
+    // ── Masters ──────────────────────────────────────────────────────────────
+
+    // Vehicle Categories
+    Route::prefix('vehicle-categories')->name('vehicle-categories.')->group(function () {
+        Route::get('/',             [VehicleCategoryController::class, 'index'])  ->name('index');
+        Route::get('/create',       [VehicleCategoryController::class, 'create']) ->name('create');
+        Route::post('/',            [VehicleCategoryController::class, 'store'])  ->name('store');
+        Route::get('/{vehicleCategory}',      [VehicleCategoryController::class, 'show'])    ->name('show');
+        Route::get('/{vehicleCategory}/edit', [VehicleCategoryController::class, 'edit'])    ->name('edit');
+        Route::put('/{vehicleCategory}',      [VehicleCategoryController::class, 'update'])  ->name('update');
+        Route::delete('/{vehicleCategory}',   [VehicleCategoryController::class, 'destroy']) ->name('destroy');
+    });
+
+    // Vehicles (new transport module — separate from existing /vehicles route)
+    Route::prefix('vehicles')->name('vehicles.')->group(function () {
+        Route::get('/',             [VehicleController::class, 'index'])  ->name('index');
+        Route::get('/create',       [VehicleController::class, 'create']) ->name('create');
+        Route::post('/',            [VehicleController::class, 'store'])  ->name('store');
+        Route::get('/{vehicle}',      [VehicleController::class, 'show'])    ->name('show');
+        Route::get('/{vehicle}/edit', [VehicleController::class, 'edit'])    ->name('edit');
+        Route::put('/{vehicle}',      [VehicleController::class, 'update'])  ->name('update');
+        Route::delete('/{vehicle}',   [VehicleController::class, 'destroy']) ->name('destroy');
+    });
+
+    // Supplier Transporters
+    Route::prefix('supplier-transporters')->name('supplier-transporters.')->group(function () {
+        Route::get('/',             [SupplierTransporterController::class, 'index'])  ->name('index');
+        Route::get('/create',       [SupplierTransporterController::class, 'create']) ->name('create');
+        Route::post('/',            [SupplierTransporterController::class, 'store'])  ->name('store');
+        Route::get('/{supplierTransporter}',      [SupplierTransporterController::class, 'show'])    ->name('show');
+        Route::get('/{supplierTransporter}/edit', [SupplierTransporterController::class, 'edit'])    ->name('edit');
+        Route::put('/{supplierTransporter}',      [SupplierTransporterController::class, 'update'])  ->name('update');
+        Route::delete('/{supplierTransporter}',   [SupplierTransporterController::class, 'destroy']) ->name('destroy');
+    });
+
+    // Vehicle Route Mappings
+    Route::prefix('vehicle-route-mappings')->name('vehicle-route-mappings.')->group(function () {
+        Route::get('/',             [VehicleRouteMappingController::class, 'index'])  ->name('index');
+        Route::get('/create',       [VehicleRouteMappingController::class, 'create']) ->name('create');
+        Route::post('/',            [VehicleRouteMappingController::class, 'store'])  ->name('store');
+        Route::get('/{vehicleRouteMapping}',      [VehicleRouteMappingController::class, 'show'])    ->name('show');
+        Route::get('/{vehicleRouteMapping}/edit', [VehicleRouteMappingController::class, 'edit'])    ->name('edit');
+        Route::put('/{vehicleRouteMapping}',      [VehicleRouteMappingController::class, 'update'])  ->name('update');
+        Route::delete('/{vehicleRouteMapping}',   [VehicleRouteMappingController::class, 'destroy']) ->name('destroy');
+    });
+
+    // Vehicle Insurance
+    Route::prefix('vehicle-insurance')->name('vehicle-insurance.')->group(function () {
+        Route::get('/',             [VehicleInsuranceController::class, 'index'])  ->name('index');
+        Route::get('/create',       [VehicleInsuranceController::class, 'create']) ->name('create');
+        Route::post('/',            [VehicleInsuranceController::class, 'store'])  ->name('store');
+        Route::get('/{vehicleInsurance}',      [VehicleInsuranceController::class, 'show'])    ->name('show');
+        Route::get('/{vehicleInsurance}/edit', [VehicleInsuranceController::class, 'edit'])    ->name('edit');
+        Route::put('/{vehicleInsurance}',      [VehicleInsuranceController::class, 'update'])  ->name('update');
+        Route::delete('/{vehicleInsurance}',   [VehicleInsuranceController::class, 'destroy']) ->name('destroy');
+    });
+
+    // Vehicle Services
+    Route::prefix('vehicle-services')->name('vehicle-services.')->group(function () {
+        Route::get('/',             [VehicleServiceController::class, 'index'])  ->name('index');
+        Route::get('/create',       [VehicleServiceController::class, 'create']) ->name('create');
+        Route::post('/',            [VehicleServiceController::class, 'store'])  ->name('store');
+        Route::get('/{vehicleService}',      [VehicleServiceController::class, 'show'])    ->name('show');
+        Route::get('/{vehicleService}/edit', [VehicleServiceController::class, 'edit'])    ->name('edit');
+        Route::put('/{vehicleService}',      [VehicleServiceController::class, 'update'])  ->name('update');
+        Route::delete('/{vehicleService}',   [VehicleServiceController::class, 'destroy']) ->name('destroy');
+    });
+
+    // ── Transactions ─────────────────────────────────────────────────────────
+
+    // Trip Sheets (Milk Collection)
+    Route::prefix('trip-sheets')->name('trip-sheets.')->group(function () {
+        Route::get('/',             [TripSheetController::class, 'index'])  ->name('index');
+        Route::get('/create',       [TripSheetController::class, 'create']) ->name('create');
+        Route::post('/',            [TripSheetController::class, 'store'])  ->name('store');
+        Route::get('/{tripSheet}',      [TripSheetController::class, 'show'])    ->name('show');
+        Route::get('/{tripSheet}/edit', [TripSheetController::class, 'edit'])    ->name('edit');
+        Route::put('/{tripSheet}',      [TripSheetController::class, 'update'])  ->name('update');
+        Route::delete('/{tripSheet}',   [TripSheetController::class, 'destroy']) ->name('destroy');
+    });
+
+    // Trip Sheets Market (Delivery)
+    Route::prefix('trip-sheets-market')->name('trip-sheets-market.')->group(function () {
+        Route::get('/',             [TripSheetMarketController::class, 'index'])  ->name('index');
+        Route::get('/create',       [TripSheetMarketController::class, 'create']) ->name('create');
+        Route::post('/',            [TripSheetMarketController::class, 'store'])  ->name('store');
+        Route::get('/{tripSheetMarket}',      [TripSheetMarketController::class, 'show'])    ->name('show');
+        Route::get('/{tripSheetMarket}/edit', [TripSheetMarketController::class, 'edit'])    ->name('edit');
+        Route::put('/{tripSheetMarket}',      [TripSheetMarketController::class, 'update'])  ->name('update');
+        Route::delete('/{tripSheetMarket}',   [TripSheetMarketController::class, 'destroy']) ->name('destroy');
+    });
+
+    // Transport Adjustments
+    Route::prefix('transport-adjustments')->name('transport-adjustments.')->group(function () {
+        Route::get('/',             [TransportAdjustmentController::class, 'index'])  ->name('index');
+        Route::get('/create',       [TransportAdjustmentController::class, 'create']) ->name('create');
+        Route::post('/',            [TransportAdjustmentController::class, 'store'])  ->name('store');
+        Route::get('/{transportAdjustment}',      [TransportAdjustmentController::class, 'show'])    ->name('show');
+        Route::get('/{transportAdjustment}/edit', [TransportAdjustmentController::class, 'edit'])    ->name('edit');
+        Route::put('/{transportAdjustment}',      [TransportAdjustmentController::class, 'update'])  ->name('update');
+        Route::delete('/{transportAdjustment}',   [TransportAdjustmentController::class, 'destroy']) ->name('destroy');
+        Route::post('/{transportAdjustment}/approve', [TransportAdjustmentController::class, 'approve']) ->name('approve');
+    });
+
+    // Transport Bills
+    Route::prefix('transport-bills')->name('transport-bills.')->group(function () {
+        Route::get('/',             [TransportBillController::class, 'index'])  ->name('index');
+        Route::get('/create',       [TransportBillController::class, 'create']) ->name('create');
+        Route::post('/',            [TransportBillController::class, 'store'])  ->name('store');
+        Route::get('/{transportBill}',      [TransportBillController::class, 'show'])    ->name('show');
+        Route::get('/{transportBill}/edit', [TransportBillController::class, 'edit'])    ->name('edit');
+        Route::put('/{transportBill}',      [TransportBillController::class, 'update'])  ->name('update');
+        Route::delete('/{transportBill}',   [TransportBillController::class, 'destroy']) ->name('destroy');
+        Route::post('/{transportBill}/approve', [TransportBillController::class, 'approve'])       ->name('approve');
+        Route::post('/{transportBill}/payment', [TransportBillController::class, 'recordPayment']) ->name('payment');
+        // AJAX: get unbilled trips for bill creation
+        Route::get('/unbilled-trips', [TransportBillController::class, 'getUnbilledTrips']) ->name('unbilled-trips');
+    });
+
+    // Secondary Transport
+    Route::prefix('secondary-transport')->name('secondary-transport.')->group(function () {
+        Route::get('/',             [SecondaryTransportController::class, 'index'])  ->name('index');
+        Route::get('/create',       [SecondaryTransportController::class, 'create']) ->name('create');
+        Route::post('/',            [SecondaryTransportController::class, 'store'])  ->name('store');
+        Route::get('/{secondaryTransport}',      [SecondaryTransportController::class, 'show'])    ->name('show');
+        Route::get('/{secondaryTransport}/edit', [SecondaryTransportController::class, 'edit'])    ->name('edit');
+        Route::put('/{secondaryTransport}',      [SecondaryTransportController::class, 'update'])  ->name('update');
+        Route::delete('/{secondaryTransport}',   [SecondaryTransportController::class, 'destroy']) ->name('destroy');
+        // AJAX: get unbilled records for bill creation
+        Route::get('/unbilled-records', [SecondaryTransportController::class, 'getUnbilledRecords']) ->name('unbilled-records');
+    });
+
+    // Secondary Transport Bills
+    Route::prefix('secondary-transport-bills')->name('secondary-transport-bills.')->group(function () {
+        Route::get('/',             [SecondaryTransportBillController::class, 'index'])  ->name('index');
+        Route::get('/create',       [SecondaryTransportBillController::class, 'create']) ->name('create');
+        Route::post('/',            [SecondaryTransportBillController::class, 'store'])  ->name('store');
+        Route::get('/{secondaryTransportBill}',      [SecondaryTransportBillController::class, 'show'])    ->name('show');
+        Route::get('/{secondaryTransportBill}/edit', [SecondaryTransportBillController::class, 'edit'])    ->name('edit');
+        Route::put('/{secondaryTransportBill}',      [SecondaryTransportBillController::class, 'update'])  ->name('update');
+        Route::delete('/{secondaryTransportBill}',   [SecondaryTransportBillController::class, 'destroy']) ->name('destroy');
+        Route::post('/{secondaryTransportBill}/approve', [SecondaryTransportBillController::class, 'approve'])       ->name('approve');
+        Route::post('/{secondaryTransportBill}/payment', [SecondaryTransportBillController::class, 'recordPayment']) ->name('payment');
+    });
+
+    // Secondary Payment Abstracts
+    Route::prefix('secondary-payment-abstracts')->name('secondary-payment-abstracts.')->group(function () {
+        Route::get('/',             [SecondaryPaymentAbstractController::class, 'index'])  ->name('index');
+        Route::get('/create',       [SecondaryPaymentAbstractController::class, 'create']) ->name('create');
+        Route::post('/',            [SecondaryPaymentAbstractController::class, 'store'])  ->name('store');
+        Route::get('/{secondaryPaymentAbstract}',      [SecondaryPaymentAbstractController::class, 'show'])    ->name('show');
+        Route::get('/{secondaryPaymentAbstract}/edit', [SecondaryPaymentAbstractController::class, 'edit'])    ->name('edit');
+        Route::put('/{secondaryPaymentAbstract}',      [SecondaryPaymentAbstractController::class, 'update'])  ->name('update');
+        Route::delete('/{secondaryPaymentAbstract}',   [SecondaryPaymentAbstractController::class, 'destroy']) ->name('destroy');
+        Route::post('/{secondaryPaymentAbstract}/finalise',    [SecondaryPaymentAbstractController::class, 'finalise'])    ->name('finalise');
+        Route::post('/{secondaryPaymentAbstract}/recalculate', [SecondaryPaymentAbstractController::class, 'recalculate']) ->name('recalculate');
+    });
+
+});
+
 // Downloads
 Route::prefix('downloads')->name('downloads.')->group(function () {
     Route::prefix('excel')->name('excel.')->group(function () {
@@ -852,6 +1030,7 @@ Route::get('/posts/{id}',       [PostController::class, 'showPost'])    -> name(
 Route::get('/posts/{id}/edit',  [PostController::class, 'editPost'])    -> name('posts.edit');
 Route::put('/posts/{id}',       [PostController::class, 'updatePost'])  -> name('posts.update');
 Route::delete('/posts/{id}',    [PostController::class, 'destroyPost']) -> name('posts.destroy');
+
 
 Route::prefix('posts')->name('posts.')->group(function () { 
     Route::get('/',          [PostController::class, 'indexPost'])   -> name('index');

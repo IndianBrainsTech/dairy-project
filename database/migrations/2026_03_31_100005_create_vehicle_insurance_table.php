@@ -4,10 +4,19 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
+/**
+ * STATUS  : ALREADY DONE — hasTable guard protects against re-run
+ * LARAVEL : Already recorded in migrations table
+ * DB      : vehicle_insurance table already exists
+ */
 return new class extends Migration
 {
     public function up(): void
     {
+        if (Schema::hasTable('vehicle_insurance')) {
+            return;
+        }
+
         Schema::create('vehicle_insurance', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('vehicle_id');
